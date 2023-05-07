@@ -1,4 +1,4 @@
-import { NavLink, Route, Routes } from "react-router-dom";
+import { NavLink, Route, Routes, useSearchParams } from "react-router-dom";
 
 import css from './App.module.css';
 
@@ -9,6 +9,17 @@ import { Cast } from "./Cast/Cast";
 import { Reviews } from "./Reviews/Reviews";
 
 export const App = () => {
+  const [searchParams, setSerchParams] = useSearchParams();
+  const queryParam = searchParams.get('query');
+
+  const handleOnSubmit =  async (evt) => {
+    evt.preventDefault();
+    const query = evt.target.text.value
+    setSerchParams({ query });
+    
+    evt.target.text.value = '';
+  };
+
   return (
     <div>
       <nav className={css.navigation}>
@@ -17,7 +28,7 @@ export const App = () => {
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/movies" element={<Movies />} />
+        <Route path="/movies" element={<Movies onSubmit={handleOnSubmit} query={queryParam} />} />
         <Route path="/movies/:filmId" element={<MovieDetails />}>
           <Route path="cast" element={<Cast />} />
           <Route path="reviews" element={<Reviews />} />

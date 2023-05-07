@@ -21,17 +21,16 @@ export const Reviews = () => {
         })();
     }, [filmId]);
 
-
     return (
         <div className={css.container}>
-            <ul>
+            {reviews.length === 0 ? <p>Not reviews</p> : (<ul>
                 {reviews.map((el) => (
                     <li key={el.id}>
                         <p className={css.name}>Author: {el.author}</p>
                         <p>{el.content}</p>
                     </li>
                 ))}
-            </ul>
+            </ul>)}
         </div>
     );
 };

@@ -21,9 +21,10 @@ export const Cast = () => {
         })();
     }, [filmId]);
 
+
     return (
         <div className={css.container}>
-            <ul>
+            {cast.length === 0 ? <p>Not information</p> : (<ul>
                 {cast.map((el) => (
                     <li key={el.id}>
                         <img className={css.imgCast} src={`https://image.tmdb.org/t/p/w200${el.profile_path}`} alt="" />
@@ -31,7 +32,7 @@ export const Cast = () => {
                         <p>Character: {el.character}</p>
                     </li>
                 ))}
-            </ul>
+            </ul>)}
         </div>
     );
 };
