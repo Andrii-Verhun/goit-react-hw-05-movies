@@ -1,12 +1,13 @@
+import { Suspense, lazy } from "react";
 import { NavLink, Route, Routes, useSearchParams } from "react-router-dom";
 
 import css from './App.module.css';
 
-import { Home } from "pages/Home/Home";
-import { Movies } from "pages/Movies/Movies";
-import { MovieDetails } from "../pages/MovieDetails/MovieDetails";
-import { Cast } from "./Cast/Cast";
-import { Reviews } from "./Reviews/Reviews";
+const Home = lazy(() => import("pages/Home/Home"));
+const Movies = lazy(() => import("pages/Movies/Movies"));
+const MovieDetails = lazy(() => import("pages/MovieDetails/MovieDetails"));
+const Cast = lazy(() => import("./Cast/Cast"));
+const Reviews = lazy(() => import("./Reviews/Reviews"));
 
 export const App = () => {
   const [searchParams, setSerchParams] = useSearchParams();
@@ -26,15 +27,17 @@ export const App = () => {
         <NavLink className={css.navlink} to='/' end>Home</NavLink>
         <NavLink className={css.navlink} to='/movies'>Movies</NavLink>
       </nav>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/movies" element={<Movies onSubmit={handleOnSubmit} query={queryParam} />} />
-        <Route path="/movies/:filmId" element={<MovieDetails />}>
-          <Route path="cast" element={<Cast />} />
-          <Route path="reviews" element={<Reviews />} />
-        </Route>
-        <Route path="*" element={<Home />} />
-      </Routes>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/movies" element={<Movies onSubmit={handleOnSubmit} query={queryParam} />} />
+          <Route path="/movies/:filmId" element={<MovieDetails />}>
+            <Route path="cast" element={<Cast />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
+          <Route path="*" element={<Home />} />
+        </Routes>
+        </Suspense>
     </div>
   );
 };

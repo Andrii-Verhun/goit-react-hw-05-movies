@@ -5,7 +5,7 @@ import css from './Movies.module.css';
 
 import { fetchFilms } from 'API/fetchFilms';
 
-export const Movies = ({ onSubmit, query }) => {
+const Movies = ({ onSubmit, query }) => {
     const [films, setFilms] = useState(undefined);
     const location = useLocation();
 
@@ -37,3 +37,5 @@ export const Movies = ({ onSubmit, query }) => {
         </div>
         );
 };
+
+export default Movies;

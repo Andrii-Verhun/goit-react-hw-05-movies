@@ -5,7 +5,7 @@ import css from './Home.module.css';
 
 import { fetchFilms } from 'API/fetchFilms';
 
-export const Home = () => {
+const Home = () => {
     const [topFilms, setTopFilms] = useState([]);
     const location = useLocation();
 
@@ -32,3 +32,5 @@ export const Home = () => {
         </div>
     );
 };
+
+export default Home;

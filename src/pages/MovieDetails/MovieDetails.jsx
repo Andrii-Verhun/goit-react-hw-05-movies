@@ -1,11 +1,11 @@
+import { Suspense, useEffect, useState } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 
 import css from './MovieDetails.module.css';
 
 import { fetchFilms } from 'API/fetchFilms';
-import { useEffect, useState } from 'react';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
     const [filmDetails, setFilmDetails] = useState({ genres: []});
     const {filmId} = useParams();
     const location = useLocation();
@@ -46,8 +46,11 @@ export const MovieDetails = () => {
                     <li><Link to={`reviews`} state={{from: backLinkHref}}>Reviews</Link></li>
                 </ul>
             </div>
-            <Outlet />
+            <Suspense fallback={<div>Loading...</div>}>
+                <Outlet />
+            </Suspense>
         </>
     );
 };
 
+export default MovieDetails;

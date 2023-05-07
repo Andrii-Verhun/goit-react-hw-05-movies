@@ -5,7 +5,7 @@ import css from './Cast.module.css';
 
 import { fetchFilms } from 'API/fetchFilms';
 
-export const Cast = () => {
+const Cast = () => {
     const [cast, setCast] = useState([]);
     const {filmId} = useParams();
 
@@ -36,3 +36,5 @@ export const Cast = () => {
         </div>
     );
 };
+
+export default Cast;

@@ -6,7 +6,7 @@ import css from './Reviews.module.css';
 import { fetchFilms } from 'API/fetchFilms';
 
 
-export const Reviews = () => {
+const Reviews = () => {
     const [reviews, setReviews] = useState([]);
     const { filmId } = useParams();
     
@@ -34,3 +34,5 @@ export const Reviews = () => {
         </div>
     );
 };
+
+export default Reviews;
