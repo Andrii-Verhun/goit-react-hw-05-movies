@@ -10,6 +10,8 @@ export const MovieDetails = () => {
     const {filmId} = useParams();
     const location = useLocation();
 
+    const backLinkHref = location.state?.from ?? "/";
+
     useEffect(() => {
         (async () => {
             try {
@@ -24,7 +26,7 @@ export const MovieDetails = () => {
     return (
         <>
             <div className={css.container}>
-                <Link className={css.link} to={location.state.from}>Go back</Link>
+                <Link className={css.link} to={backLinkHref}>Go back</Link>
                 <div className={css.filmDetails}>
                     <img src={`https://image.tmdb.org/t/p/w200${filmDetails.poster_path}`} alt="" />
                     <div className={css.description}>
@@ -40,8 +42,8 @@ export const MovieDetails = () => {
             <div className={css.container}>
                 <h4>Additional information</h4>
                 <ul>
-                    <li><Link to={`cast`} state={{from: location.state.from}}>Cast</Link></li>
-                    <li><Link to={`reviews`} state={{from: location.state.from}}>Reviews</Link></li>
+                    <li><Link to={`cast`} state={{from: backLinkHref}}>Cast</Link></li>
+                    <li><Link to={`reviews`} state={{from: backLinkHref}}>Reviews</Link></li>
                 </ul>
             </div>
             <Outlet />
