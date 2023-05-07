@@ -1,0 +1,35 @@
+.container {
+    padding: 15px 20px 15px 20px;
+    border-bottom: 3px solid #727272;
+}
+
+.link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    width: 80px;
+    height: 25px;
+    margin-bottom: 5px;
+    border: 2px solid #777676;
+    border-radius: 5px;
+    background-color: #81cce2;
+    transition: all 350ms;
+}
+
+.link:hover {
+    background-color: #5695a8;
+}
+
+.link:active {
+    background-color: #56a85a;
+}
+
+.filmDetails {
+    display: flex;
+    gap: 20px;
+}
+
+.description {
+
+}
