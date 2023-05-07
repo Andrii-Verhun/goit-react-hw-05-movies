@@ -21,7 +21,7 @@ export const MovieDetails = () => {
                 console.log(error);
             };
         })();
-    }, []);
+    }, [filmId]);
 
     return (
         <>
@@ -31,7 +31,7 @@ export const MovieDetails = () => {
                     <img src={`https://image.tmdb.org/t/p/w200${filmDetails.poster_path}`} alt="" />
                     <div className={css.description}>
                         <h2>{filmDetails.original_title} ({new Date(filmDetails.release_date).getFullYear()})</h2>
-                        <p>User score: {filmDetails.vote_average * 10}%</p>
+                        <p>User score: {Math.round(filmDetails.vote_average * 10)}%</p>
                         <h3>Overview</h3>
                         <p>{filmDetails.overview}</p>
                         <h3>Genres</h3>

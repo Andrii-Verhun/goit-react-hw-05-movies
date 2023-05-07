@@ -1,0 +1,8 @@
+.container {
+    padding: 15px 20px 15px 20px;
+    border-bottom: 3px solid #727272;
+}
+
+.name {
+    font-weight: 600;
+}
