@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import css from './Movies.module.css';
 
@@ -39,3 +40,11 @@ const Movies = ({ onSubmit, query }) => {
 };
 
 export default Movies;
+
+Movies.propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+    query: PropTypes.oneOfType([
+    PropTypes.string.isRequired,
+    PropTypes.bool.isRequired
+  ]),
+};
