@@ -9,7 +9,6 @@ const MovieDetails = () => {
     const [filmDetails, setFilmDetails] = useState({ genres: []});
     const {filmId} = useParams();
     const location = useLocation();
-
     const backLinkHref = location.state?.from ?? "/";
 
     useEffect(() => {
