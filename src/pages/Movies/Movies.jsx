@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import css from './Movies.module.css';
@@ -8,7 +8,14 @@ import { fetchFilms } from 'API/fetchFilms';
 
 const Movies = ({ onSubmit, query }) => {
     const [films, setFilms] = useState(undefined);
+    const [searchParams] = useSearchParams();
     const location = useLocation();
+    const queryParam = searchParams.get('query');
+    const input = useRef();
+
+    useEffect(() => {
+        if (queryParam) input.current.value = queryParam;
+    });
 
     useEffect(() => {
         if (!query) return;
@@ -25,7 +32,7 @@ const Movies = ({ onSubmit, query }) => {
     return (
         <div className={css.container}>
             <form onSubmit={onSubmit}>
-                <input className={css.input} name='text' type="text" />
+                <input className={css.input} ref={input} name='text' type="text" />
                 <button type="submit">Search</button>
             </form>
             <ul>

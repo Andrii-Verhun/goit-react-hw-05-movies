@@ -17,8 +17,6 @@ export const App = () => {
     evt.preventDefault();
     const query = evt.target.text.value
     setSerchParams({ query });
-    
-    evt.target.text.value = '';
   };
 
   return (
