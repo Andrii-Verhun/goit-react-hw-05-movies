@@ -1,5 +1,5 @@
 import { Suspense, lazy } from "react";
-import { NavLink, Route, Routes, useSearchParams } from "react-router-dom";
+import { NavLink, Navigate, Route, Routes, useSearchParams } from "react-router-dom";
 
 import css from './App.module.css';
 
@@ -33,7 +33,7 @@ export const App = () => {
             <Route path="cast" element={<Cast />} />
             <Route path="reviews" element={<Reviews />} />
           </Route>
-          <Route path="*" element={<Home />} />
+          <Route path="*" element={<Navigate to="/" replace={true} />} />
         </Routes>
         </Suspense>
     </div>
